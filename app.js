@@ -2,13 +2,14 @@ const express = require('express');
 const path = require('path')
 const port = 4200;
 const app = express();
+const projectFolder = './dist/eden-farms'
 
 /*
     * "dist" folder contains angular project
     * in this case it is "eden-farms"
     * it can be any angular project and the folder name can be changed according to the project name
 */
-app.use(express.static('./dist/eden-farms'))
+app.use(express.static(projectFolder))
 /*
     * node uses different templates for rendering html files
     * here, we have used pug for example
@@ -34,11 +35,11 @@ app.get('/', getRoot);
 app.get('/*', getUndefined);
 
 function getRoot(request, response) {
-    response.sendFile(path.resolve('./dist/eden-farms/index.html'));
+    response.sendFile(path.resolve(`${projectFolder}/index.html`));
  }
  
  function getUndefined(request, response) {
-    response.sendFile(path.resolve('./dist/eden-farms/index.html'));
+    response.sendFile(path.resolve(`${projectFolder}/index.html`));
  }
 
 
